@@ -2,6 +2,8 @@
 
 # Function : The player starts with 100 gold coins. Players can open 10 gold coin loot boxes until they choose to stop, or run out of money. If the user pulls a legendary item, they immeditally recieve 20 gold coins. 
 
+import random
+
 loot_box = {
     "Sword" : {
         "Rarity" : 2,
@@ -36,29 +38,39 @@ loot_box = {
 }
 
 #User starts with 100 gold coins
-current_coins = 100
+
 
 def main():
-    print("Welcome to my mystical look shop. It appears so thought you dont have any money? That is ok, I will give you 100 gold coins to do with your desire. Each box cost 10 coins, so be wise with your decisions!")
+    print("Welcome to my mystical loot shop. It appears so thought you dont have any money? That is ok, I will give you 100 gold coins to do with your desire. Each box cost 10 coins, so be wise with your decisions!")
+
+    current_coins = 100
 
     while current_coins != 0:
         currentChoice = makeChoice()
 
         if (currentChoice) == "y":
+            current_coins -= 10
             openLoot()
         else :
-            finalMessage()
+            break
+
+    print("That loop was broken")
+
+    
 
 
 
 def makeChoice():
-    choice = input("Enter y if you would like to open a box, and anything else if you dont want to")
+    choice = input("Enter y if you would like to open a box : ")
 
     return choice
 
 def openLoot():
-    current_coins -= 10
+
     print("Opening Loot")
+    global loot_box
+    item = random.choice(list(loot_box))
+    print(item)
 
 
 def finalMessage():
