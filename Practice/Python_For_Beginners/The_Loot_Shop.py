@@ -41,10 +41,27 @@ current_coins = 100
 def main():
     print("Welcome to my mystical look shop. It appears so thought you dont have any money? That is ok, I will give you 100 gold coins to do with your desire. Each box cost 10 coins, so be wise with your decisions!")
 
-    makeChoice()
+    while current_coins != 0:
+        currentChoice = makeChoice()
+
+        if (currentChoice) == "y":
+            openLoot()
+        else :
+            finalMessage()
+
 
 
 def makeChoice():
     choice = input("Enter y if you would like to open a box, and anything else if you dont want to")
 
     return choice
+
+def openLoot():
+    current_coins -= 10
+    print("Opening Loot")
+
+
+def finalMessage():
+    print("Final Message")
+
+main()
