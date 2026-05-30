@@ -37,13 +37,16 @@ loot_box = {
     }
 }
 
+current_coins = 100
+
+
 #User starts with 100 gold coins
 
 
 def main():
     print("Welcome to my mystical loot shop. It appears so thought you dont have any money? That is ok, I will give you 100 gold coins to do with your desire. Each box cost 10 coins, so be wise with your decisions!")
 
-    current_coins = 100
+    global current_coins
 
     while current_coins != 0:
         currentChoice = makeChoice()
@@ -69,8 +72,13 @@ def openLoot():
 
     print("Opening Loot")
     global loot_box
+    global current_coins
     item = random.choice(list(loot_box))
     print(item)
+
+    if (loot_box.get(item,{}).get("Rarity",{}) >= 8):
+        current_coins += 20
+        print("Congrats! You recieved 20 more coins!")
 
 
 def finalMessage():
