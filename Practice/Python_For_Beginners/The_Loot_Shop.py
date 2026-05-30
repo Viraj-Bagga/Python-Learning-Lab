@@ -5,26 +5,46 @@
 loot_box = {
     "Sword" : {
         "Rarity" : 2,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .1
     },
     "Shield" : {
         "Rarity" : 3,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .2
     },
     "Invisability Potion" : {
         "Rarity" : 4,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .2
     },
     "Rusty Blade" : {
         "Rarity" : 6,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .2
     },
     "Armour" : {
         "Rarity" : 7,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .1
     },
     "Magic Wand" : {
         "Rarity" : 9,
-        "Cost" : 5
+        "Cost" : 5,
+        "Chance" : .1
     }
 }
+
+#User starts with 100 gold coins
+current_coins = 100
+
+def main():
+    print("Welcome to my mystical look shop. It appears so thought you dont have any money? That is ok, I will give you 100 gold coins to do with your desire. Each box cost 10 coins, so be wise with your decisions!")
+
+    makeChoice()
+
+
+def makeChoice():
+    choice = input("Enter y if you would like to open a box, and anything else if you dont want to")
+
+    return choice
