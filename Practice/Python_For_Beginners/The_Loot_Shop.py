@@ -44,7 +44,9 @@ loot = ["Sword", "Shield", "Invisability Potion", "Rusty Blade", "Armour", "Magi
 #Keeps track of the players coin count at any given moment
 current_coins = 100
 
-items = []
+#A running list of how many of each items the user recieves. 
+perItemTotal = [0,0,0,0,0,0]
+totalSum = 0
 
 weights = [.2,.2,.2,.2,.1,.1]
 
@@ -57,7 +59,7 @@ def main():
     global current_coins
     global items
 
-    while current_coins != 0:
+    while current_coins >= 10:
         currentChoice = makeChoice()
 
         if (currentChoice) == "y":
@@ -76,32 +78,100 @@ def makeChoice():
 
 def openLoot():
 
-    
     global loot_box
     global current_coins
-    global items
     global weights
+    global loot
+    global totalSum
+    global item
 
     item = np.random.choice(list(loot_box), size = 1, p=weights)[0]
 
+    print(item)
+
+    match item:
+        case "Sword":
+            perItemTotal[0] += 1
+        case "Shield":
+            perItemTotal[1] += 1
+        case "Invisability Potion":
+            perItemTotal[2] += 1
+        case "Rusty Blade":
+            perItemTotal[3] += 1
+        case "Armour":
+            perItemTotal[4] += 1
+        case "Magic Wand":
+            perItemTotal[5] += 1
+
     print(f"You recieved a {item}")
-    items.append(item)
+    totalSum += 1
     
     if loot_box[item+""].get("Rarity",0) >= 8:
         current_coins += 20
         print("Congrats! You recieved 20 more coins!")
 
 
-    
-
 
 def finalMessage():
     
     global items
     global current_coins
+    global totalSum
+    global perItemTotal
 
-    totalItems = len(items)
+
+    totalItems = totalSum
+    swordString = ""
+    shieldString = ""
+    invisabilityString = ""
+    rustyString = ""
+    armourString = ""
+    magicString = ""
+
+
+    if perItemTotal[0] > 1:
+        swordString = "Swords,"
+    elif perItemTotal[0] == 1:
+        swordString = "Sword,"
+    else :
+        swordString = " "
+    
+    if perItemTotal[1] > 1:
+        shieldString = "Shields,"
+    elif perItemTotal[1] == 1:
+        shieldString = "Shield,"
+    else:
+        shieldString =  ""
+    
+    if perItemTotal[2] > 1:
+        invisabilityString = "Invisability Potions,"
+    elif perItemTotal[2] == 1:
+        invisabilityString = "Invisability Potion,"
+    else:
+        invisabilityString =  ""
+    
+    if perItemTotal[3] > 1:
+        rustyString = "Rusty Blades,"
+    elif perItemTotal[3] == 1:
+        rustyString = "Rusty Blade,"
+    else:
+        rustyString =  ""
+    
+    if perItemTotal[4] > 1:
+        armourString = "pieces of Armour,"
+    elif perItemTotal[4] == 1:
+        armourString = "piece of Armour,"
+    else:
+        armourString =  ""
+    
+    if perItemTotal[5] > 1:
+        magicString = "and Magic Wands!"
+    elif perItemTotal[5] == 1:
+        magicString = "and Magic Wand!"
+    else:
+        magicString =  ""
 
     print(f"You recieved {totalItems} and have {current_coins} gold coins remaining!")
+    print(f"You got {perItemTotal[0]} {swordString} {perItemTotal[1]} {shieldString} {perItemTotal[2]} {invisabilityString} {perItemTotal[3]} {rustyString} {perItemTotal[4]} {armourString} {perItemTotal[5]} {magicString} ")
 
 main()
