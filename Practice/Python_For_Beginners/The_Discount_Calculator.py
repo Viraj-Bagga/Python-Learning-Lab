@@ -1,5 +1,5 @@
 def apply_discount(price, discount_percent = 10):
-    final_price = price * (1 + (discount_percent/100))
+    final_price = price * (1 - (discount_percent/100))
 
     return final_price
 
