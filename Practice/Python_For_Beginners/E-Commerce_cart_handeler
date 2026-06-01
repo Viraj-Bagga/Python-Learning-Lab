@@ -1,0 +1,19 @@
+shopping_cart = {
+    "customer_id" : "CUST-992",
+    "shipping_coords" : (40.7128, -74.0060),
+    "items" : [{
+        "product_name" : "mug",
+        "price" : 5.99
+    }]
+}
+
+shopping_cart["is_expedited"] = True
+
+shopping_cart["items"].append({
+    "product_name" : "rug",
+    "price" : 9.99
+})
+
+print(shopping_cart["items"][1].get("price"))
+
+#If you tried to run shopping_cart["shipping_coords"][0] = 41.9791, the code would crash because you would trying to change an immutible object
