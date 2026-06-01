@@ -2,19 +2,47 @@ import numpy as np
 
 #Standard Arrays
 
-arr = np.array([1,2,3,4])
+#arr = np.array([1,2,3,4])
 #print(arr)
 #print(arr*2)
 #print(type(arr))
 
 #Multidimensional Arrays
 
-multi_dem_arr = np.array([[["A", "B", "C"],["D", "E", "F"]],
-                          [["A", "B", "C"],["D", "E", "F"]]])
+#multi_dem_arr = np.array([[["A", "B", "C"],["D", "E", "F"]],
+#                          [["A", "B", "C"],["D", "E", "F"]]])
+
 #print(multi_dem_arr)
 #print(multi_dem_arr.shape)
 #print(multi_dem_arr.ndim)
 #print(multi_dem_arr[0,0,0] + multi_dem_arr[1,1,2])
+
+#Slicing
+
+arr = np.array([[1,2,3,4], 
+               [5,6,7,8], 
+               [9,10,11,12], 
+               [13,14,15,16]])
+
+#Row Selection
+
+#print(arr[0])
+#print(arr[-1])
+
+#arr[start:end:step]
+#print(arr[1:4])
+#print(arr[2:])
+#print(arr[0:4:2])
+#print(arr[::2])
+#print(arr[::-2])
+
+#Column Selection
+
+#print(arr[:,0])
+#print(arr[:, 1::2])
+#rint(arr[2:4, 0:2])
+
+
 
 
 
